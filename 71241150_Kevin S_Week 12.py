@@ -27,18 +27,19 @@ except Exception as e:
     print(f"Telah Terjadi Kesalahan: {e}")
 
 print("\nSoal 4\n")
-import re
-def hitung_pesan(nama):
+def hitung_pesan(nama_file):
     try:
+        hitung = {}
         with open(nama_file, 'r') as file:
-            domain_counts = {}
-        for line in file:
-            match = re.search(r"From (\S+@\S+)", line) #mencari pola email
-            if match:
-                email = match.group(1)
-                domain = email.split('@')[1] #mengambil domain
-                domain_counts[domain] = domain_counts.get(domain, 0) + 1
-        return domain_counts
+            for baris in file:
+                if baris.startswith("From "): #mencari pola email yang ada from nya
+                    kata = baris.split()
+                    if len(kata) >=2:
+                        email = kata[1]
+                        if '@' in email:
+                            domain = email.split('@')[1]
+                            hitung[domain] = hitung.get(domain, 0) + 1
+        return hitung
     except FileNotFoundError:
         return None
 nama_file = "mbox-short.txt"
