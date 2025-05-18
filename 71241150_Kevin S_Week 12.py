@@ -42,7 +42,7 @@ def hitung_pesan(nama_file):
         return hitung
     except FileNotFoundError:
         return None
-nama_file = "mbox-short.txt"
+nama_file = input('Masukkan nama file:\n>>> ') #mbox-short.txt
 hasil = hitung_pesan(nama_file)
 if hasil:
     print(hasil)
