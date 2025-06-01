@@ -1,0 +1,2 @@
+Ini File awal/1, isinya itu merk ac.
+Contoh: Panasonic, polytron, midea, lg, sharp, mustibisha.
